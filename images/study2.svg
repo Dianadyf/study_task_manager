@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="800" height="500">
+  <rect width="800" height="500" fill="#fdf6ec"/>
+  <rect x="0" y="380" width="800" height="120" fill="#f0e2cc"/>
+  <!-- planner -->
+  <rect x="180" y="90" width="440" height="280" rx="14" fill="#ffffff" stroke="#c9a227" stroke-width="8"/>
+  <rect x="180" y="90" width="440" height="56" rx="14" fill="#2a9d8f"/>
+  <circle cx="220" cy="118" r="14" fill="#ffffff" opacity="0.85"/>
+  <!-- checklist -->
+  <g fill="#264653" font-family="Segoe UI, Arial" font-size="22">
+    <rect x="220" y="176" width="26" height="26" rx="6" fill="#2a9d8f"/>
+    <path d="M226 189 l7 7 l12 -14" stroke="#fff" stroke-width="4" fill="none"/>
+    <rect x="270" y="176" width="220" height="12" rx="6" fill="#dcd6cc"/>
+    <rect x="220" y="228" width="26" height="26" rx="6" fill="#2a9d8f"/>
+    <path d="M226 241 l7 7 l12 -14" stroke="#fff" stroke-width="4" fill="none"/>
+    <rect x="270" y="228" width="260" height="12" rx="6" fill="#dcd6cc"/>
+    <rect x="220" y="280" width="26" height="26" rx="6" fill="#fff" stroke="#b9b2a6" stroke-width="3"/>
+    <rect x="270" y="280" width="180" height="12" rx="6" fill="#dcd6cc"/>
+  </g>
+  <!-- clock -->
+  <circle cx="640" cy="150" r="52" fill="#ffffff" stroke="#e76f51" stroke-width="10"/>
+  <path d="M640 150 L640 116 M640 150 L664 162" stroke="#264653" stroke-width="6" stroke-linecap="round"/>
+  <!-- pencil -->
+  <rect x="600" y="320" width="130" height="18" rx="6" fill="#f4a261" transform="rotate(-18 660 330)"/>
+  <text x="400" y="460" text-anchor="middle" font-family="Segoe UI, Arial" font-size="26" fill="#6d5518">Plan tasks and track deadlines</text>
+</svg>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ethics &amp; Privacy Reflection - My Study Task Manager</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="brand">
+      <h1>My Study Task Manager</h1>
+      <span>Organize your academic responsibilities in one place</span>
+    </div>
+    <nav class="main-nav">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="tasks.html">Task Manager</a></li>
+        <li><a href="troubleshooting.html">Troubleshooting Blog</a></li>
+        <li><a href="ethics.html">Ethics &amp; Privacy</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="card">
+      <h2>Ethical Data Use in This Application</h2>
+      <p class="qa"><strong>Which features support the ethical use of data?</strong></p>
+      <p>The application collects only the minimum information needed for it to work: a task title,
+        a course code and name, a due date, a short description and a priority level. Nothing is
+        collected that could identify the user beyond what the user chooses to type into the task
+        themselves. Ethical data use is also supported by transparency - the user can see every
+        piece of data the application holds, because all tasks are displayed in the task table at
+        all times, and the user can edit or permanently delete any of that data at any moment.</p>
+      <p>In addition, the confirmation dialog shown before deleting a task is an ethical design
+        choice: it prevents data from being destroyed accidentally, which respects the effort the
+        user invested in creating it.</p>
+    </section>
+
+    <section class="card">
+      <h2>Data Privacy in This Application</h2>
+      <p class="qa"><strong>Which features support data privacy?</strong></p>
+      <p>Three design decisions protect the privacy of the user's data:</p>
+      <ol>
+        <li><strong>Access is restricted by a login system.</strong> The Task Manager page cannot
+          be used without a username and password, so another person using the same computer
+          cannot view or change the student's tasks.</li>
+        <li><strong>Data stays on the user's own device.</strong> Tasks are stored in the
+          browser's <code>localStorage</code>. The application has no server and sends nothing
+          over the internet, which means no third party can access the user's study data.</li>
+        <li><strong>Minimal data collection.</strong> The app deliberately does not ask for a real
+          name, email address, phone number or any student ID, so there is no personal information
+          to leak, lose or misuse.</li>
+      </ol>
+    </section>
+
+    <section class="card">
+      <h2>Examples of Ethical and Privacy-Aware Design</h2>
+      <p>The following concrete examples show how moral and privacy-conscious design was applied
+        while building this web application:</p>
+      <ul>
+        <li><strong>Input validation.</strong> Every field is validated before saving - required
+          fields cannot be left empty and impossible dates (such as 30 February) are rejected.
+          This is ethical because it prevents the system from storing corrupt or meaningless data
+          that could mislead the user later.</li>
+        <li><strong>Login-controlled access.</strong> A simple username/password check gates the
+          task page. Password input is masked on screen so it is not visible to people nearby.</li>
+        <li><strong>Deleting with confirmation.</strong> The <code>confirm()</code> dialog shows
+          exactly which task will be deleted before the action is performed, giving the user full
+          control over their own data.</li>
+        <li><strong>Output escaping.</strong> All user-entered text is HTML-escaped before it is
+          rendered back into the task table, which protects users from script injection through
+          their own task descriptions.</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2>Reflection</h2>
+      <p>Building this application taught me that ethical responsibility and privacy are not
+        optional extras in web development - they are design decisions that must be made from the
+        very beginning. Even in a small, personal project like a study task manager, choices such
+        as how much data to collect, where the data lives, who can see it and how easily it can be
+        removed all affect real users. When applications handle user-generated data, developers
+        have a duty to collect less, protect what is collected, and always give users control over
+        their own information.</p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="datetime" id="current-datetime">Current Date &amp; Time: loading...</div>
+    <small>&copy; 2026 My Study Task Manager | Student web application project</small>
+  </footer>
+
+  <script src="js/shared.js"></script>
+</body>
+</html>

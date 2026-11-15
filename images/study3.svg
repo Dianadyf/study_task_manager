@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="800" height="500">
+  <rect width="800" height="500" fill="#f3f0fa"/>
+  <rect x="0" y="380" width="800" height="120" fill="#e2dbf0"/>
+  <!-- graduation cap -->
+  <path d="M400 90 L560 150 L400 210 L240 150 Z" fill="#3d3a6b"/>
+  <rect x="360" y="180" width="80" height="46" fill="#3d3a6b"/>
+  <path d="M545 160 L545 230" stroke="#f4a261" stroke-width="8" stroke-linecap="round"/>
+  <circle cx="545" cy="240" r="12" fill="#f4a261"/>
+  <!-- books stack -->
+  <rect x="200" y="300" width="180" height="34" rx="6" fill="#e63946"/>
+  <rect x="220" y="266" width="160" height="34" rx="6" fill="#457b9d"/>
+  <rect x="240" y="232" width="140" height="34" rx="6" fill="#2a9d8f"/>
+  <!-- coffee -->
+  <rect x="560" y="300" width="70" height="80" rx="10" fill="#ffffff" stroke="#b9b2d8" stroke-width="4"/>
+  <path d="M630 320 q30 8 0 36" stroke="#b9b2d8" stroke-width="6" fill="none"/>
+  <path d="M585 275 q6 -14 0 -24 M605 275 q6 -14 0 -24" stroke="#b9b2d8" stroke-width="5" fill="none" stroke-linecap="round"/>
+  <!-- light bulb -->
+  <circle cx="660" cy="180" r="40" fill="#ffd166"/>
+  <rect x="646" y="216" width="28" height="20" rx="6" fill="#b9b2a6"/>
+  <text x="400" y="460" text-anchor="middle" font-family="Segoe UI, Arial" font-size="26" fill="#4a4470">Learn, grow and stay organized</text>
+</svg>

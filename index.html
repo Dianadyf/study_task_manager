@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Study Task Manager - Home</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="brand">
+      <h1>My Study Task Manager</h1>
+      <span>Organize your academic responsibilities in one place</span>
+    </div>
+    <nav class="main-nav">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="tasks.html">Task Manager</a></li>
+        <li><a href="troubleshooting.html">Troubleshooting Blog</a></li>
+        <li><a href="ethics.html">Ethics &amp; Privacy</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <p class="tagline">A web application that helps students create, update, delete and view
+        their study tasks so that no deadline is ever missed again.</p>
+    </section>
+
+    <!-- Image carousel (requirement: at least 3 images + button to cycle) -->
+    <section class="card carousel" aria-label="Study image gallery">
+      <div class="carousel-frame">
+        <img id="carousel-image" src="images/study1.svg" alt="Study illustration">
+      </div>
+      <p class="carousel-caption" id="carousel-caption"></p>
+      <button class="btn secondary" id="carousel-prev" type="button">&#10094; Previous</button>
+      <button class="btn" id="carousel-next" type="button">Next &#10095;</button>
+      <p class="hint" id="carousel-counter"></p>
+    </section>
+
+    <section class="card">
+      <h2>About This App</h2>
+      <p>The <strong>My Study Task Manager</strong> web application was built for a simple purpose:
+        students usually juggle many academic responsibilities at the same time - assignments,
+        revision tasks, quizzes and project deadlines - and informal methods such as handwritten
+        notes or basic spreadsheets become unreliable as the workload grows.</p>
+      <p>This application provides a structured and user-friendly interface so that a student can
+        manage all study tasks from one central place. Its key features are:</p>
+      <div class="feature-grid">
+        <div class="feature"><strong>Create tasks</strong><br>Add a task title, course code and name, due date, description and priority.</div>
+        <div class="feature"><strong>Update tasks</strong><br>Select an existing task and edit any of its details, then save the changes.</div>
+        <div class="feature"><strong>Delete tasks</strong><br>Remove tasks that are no longer needed, with a confirmation dialog.</div>
+        <div class="feature"><strong>View all tasks</strong><br>All current tasks are shown in an ordered table sorted by due date.</div>
+        <div class="feature"><strong>Data validation</strong><br>Invalid dates and empty required fields are rejected with clear error messages.</div>
+        <div class="feature"><strong>Login system</strong><br>Access to the task manager is restricted by a username and password.</div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>About Me</h2>
+      <p>Hi! I am an IT student who built this application as part of my coursework. I am currently
+        studying courses such as <em>Information Technology Systems (INFO1012)</em> and I am
+        particularly interested in web development and user experience design.</p>
+      <p>Like most students, I used to manage my study workload with sticky notes and a paper
+        planner. That worked at the start of the semester, but when several course assessments
+        shared the same deadline week, tasks started to slip through the cracks. That experience
+        is exactly why I designed this application around my own study habits: I list every task
+        as soon as it is announced, sort everything by due date, and review the list every
+        morning before lectures.</p>
+      <p><em>Example from my routine:</em> every Monday I plan the week's revision tasks, and every
+        Friday I clean up finished tasks in the manager - the same workflow this app supports with
+        its create, update and delete features.</p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="datetime" id="current-datetime">Current Date &amp; Time: loading...</div>
+    <small>&copy; 2026 My Study Task Manager | Student web application project</small>
+  </footer>
+
+  <script src="js/shared.js"></script>
+  <script src="js/home.js"></script>
+</body>
+</html>

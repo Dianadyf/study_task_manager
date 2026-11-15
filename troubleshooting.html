@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Troubleshooting Blog - My Study Task Manager</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="brand">
+      <h1>My Study Task Manager</h1>
+      <span>Organize your academic responsibilities in one place</span>
+    </div>
+    <nav class="main-nav">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="tasks.html">Task Manager</a></li>
+        <li><a href="troubleshooting.html">Troubleshooting Blog</a></li>
+        <li><a href="ethics.html">Ethics &amp; Privacy</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="card">
+      <h2>Project Plan - Three-Week Sprint</h2>
+      <p>The application was developed following a clear, structured <strong>three-week sprint</strong>.
+        The table below outlines each stage of the sprint, what was planned for that week, and the
+        deliverables produced.</p>
+      <div class="table-wrap">
+        <table class="data-table sprint-table">
+          <thead>
+            <tr>
+              <th>Stage</th>
+              <th>Week</th>
+              <th>Activities</th>
+              <th>Deliverables</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Planning</strong></td>
+              <td>Week 1 (early)</td>
+              <td>Defined the purpose of the application, identified user needs (students managing
+                assignments, revision and deadlines), listed the required pages and features.</td>
+              <td>Feature list, page structure (Home, Task Manager, Troubleshooting Blog, Ethics &amp; Privacy).</td>
+            </tr>
+            <tr>
+              <td><strong>Analysis</strong></td>
+              <td>Week 1</td>
+              <td>Analyzed what data a task needs (title, course, due date, description, priority),
+                decided on browser <code>localStorage</code> for persistence and a simple login gate.</td>
+              <td>Data requirements list, validation rules, storage design.</td>
+            </tr>
+            <tr>
+              <td><strong>Design</strong></td>
+              <td>Week 1 - 2</td>
+              <td>Sketched the layout of each page, chose a consistent colour scheme and typography,
+                designed the task table and the create/update form.</td>
+              <td>Shared stylesheet, page wireframes, navigation design.</td>
+            </tr>
+            <tr>
+              <td><strong>Implementation</strong></td>
+              <td>Week 2</td>
+              <td>Built the HTML pages, CSS styling and JavaScript logic: login, create, update,
+                delete with confirmation, ordered task table and live date/time footer.</td>
+              <td>Working web application (all four pages functional).</td>
+            </tr>
+            <tr>
+              <td><strong>Testing &amp; Maintenance</strong></td>
+              <td>Week 3</td>
+              <td>Tested every feature (valid and invalid input, editing, deleting, login errors),
+                fixed bugs found during testing, documented errors in this blog, refactored code.</td>
+              <td>Tested and polished application, this troubleshooting blog.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Bugs Encountered During Development</h2>
+      <p>The following errors were encountered while implementing the create, update, delete,
+        validation and interface behaviour of the application. For each error, this page records
+        the <strong>date and time</strong>, a <strong>screenshot</strong>, the
+        <strong>code snippet that caused the problem</strong>, and a detailed
+        <strong>troubleshooting explanation</strong> with the date/time it was solved, a screenshot
+        of the working application and the corrected code.</p>
+    </section>
+
+    <!-- ==================== ERROR 1 ==================== -->
+    <section class="card error-entry">
+      <h3>Error 1: Tasks were displayed in random order instead of ordered by due date</h3>
+
+      <h4>When the problem occurred</h4>
+      <p><strong>Date &amp; time:</strong> 20 May 2026, 10:35 AM - discovered while testing the
+        "View all study tasks" feature after adding five tasks with mixed due dates.</p>
+
+      <h4>Screenshot of the problem</h4>
+      <div class="screenshot-placeholder">
+        [INSERT SCREENSHOT: task table showing tasks listed in insertion order, e.g. a task due
+        30/05 appearing above a task due 22/05]
+      </div>
+
+      <h4>Code snippet that caused the problem</h4>
+<pre><code>function renderTasks() {
+  var tbody = document.getElementById("task-table-body");
+  var tasks = loadTasks();  // BUG: tasks are used directly in storage order
+
+  tbody.innerHTML = tasks.map(function (t) {
+    return "&lt;tr&gt;&lt;td&gt;" + t.title + "&lt;/td&gt;...&lt;/tr&gt;";
+  }).join("");
+}</code></pre>
+
+      <h4>When the problem was solved</h4>
+      <p><strong>Date &amp; time:</strong> 20 May 2026, 12:10 PM.</p>
+
+      <h4>Screenshot of the working application</h4>
+      <div class="screenshot-placeholder">
+        [INSERT SCREENSHOT: task table now sorted from the earliest due date to the latest,
+        with the "Due soon" and "Overdue" status labels visible]
+      </div>
+
+      <h4>Corrected code snippet</h4>
+<pre><code>function renderTasks() {
+  var tbody = document.getElementById("task-table-body");
+  // FIX: copy the array and sort it by due date before rendering
+  var tasks = loadTasks().slice().sort(function (a, b) {
+    return a.dueDate.localeCompare(b.dueDate); // YYYY-MM-DD sorts chronologically
+  });
+
+  tbody.innerHTML = tasks.map(function (t) {
+    return "&lt;tr&gt;&lt;td&gt;" + t.title + "&lt;/td&gt;...&lt;/tr&gt;";
+  }).join("");
+}</code></pre>
+
+      <h4>Explanation</h4>
+      <ul>
+        <li><strong>Possible cause:</strong> <code>localStorage</code> returns tasks in the order
+          they were created, not in the order of any field inside them. The requirement says tasks
+          must be displayed in an ordered format, so rendering the raw array did not satisfy it.</li>
+        <li><strong>How it was solved:</strong> the array is copied with <code>slice()</code>
+          (so the stored data is never mutated) and sorted with <code>localeCompare()</code>.
+          Because due dates are stored in ISO format <code>YYYY-MM-DD</code>, comparing the
+          strings sorts them chronologically without converting to <code>Date</code> objects.</li>
+        <li><strong>Resources / references:</strong> MDN Web Docs - <code>Array.prototype.sort()</code>
+          and <code>String.prototype.localeCompare()</code>;
+          lecture notes on storing structured data with <code>localStorage</code> and JSON.</li>
+      </ul>
+    </section>
+
+    <!-- ==================== ERROR 2 ==================== -->
+    <section class="card error-entry">
+      <h3>Error 2: Invalid dates were accepted by the create-task form</h3>
+
+      <h4>When the problem occurred</h4>
+      <p><strong>Date &amp; time:</strong> 22 May 2026, 2:48 PM - discovered during data-validation
+        testing when a due date typed as <code>2026-02-31</code> (a date that does not exist) was
+        accepted, and the task appeared with a wrong due date.</p>
+
+      <h4>Screenshot of the problem</h4>
+      <div class="screenshot-placeholder">
+        [INSERT SCREENSHOT: form accepting 2026-02-31 as the due date and the task being saved
+        without any error message]
+      </div>
+
+      <h4>Code snippet that caused the problem</h4>
+<pre><code>function isValidDate(value) {
+  // BUG: JavaScript rolls overflow dates forward instead of rejecting them
+  var d = new Date(value);
+  return !isNaN(d.getTime());   // 2026-02-31 becomes 2026-03-03, so this returns true
+}</code></pre>
+
+      <h4>When the problem was solved</h4>
+      <p><strong>Date &amp; time:</strong> 22 May 2026, 4:05 PM.</p>
+
+      <h4>Screenshot of the working application</h4>
+      <div class="screenshot-placeholder">
+        [INSERT SCREENSHOT: red validation message "Invalid date: please enter a real calendar
+        date (YYYY-MM-DD)." shown under the Due Date field, task not saved]
+      </div>
+
+      <h4>Corrected code snippet</h4>
+<pre><code>function isValidDate(value) {
+  // FIX 1: the value must match the exact YYYY-MM-DD pattern
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(value)) return false;
+  var d = new Date(value + "T00:00:00");
+  if (isNaN(d.getTime())) return false;
+  // FIX 2: round-trip check - the date must convert back to the same string,
+  // so impossible dates like 2026-02-31 are rejected
+  return value === d.toISOString().slice(0, 10);
+}</code></pre>
+
+      <h4>Explanation</h4>
+      <ul>
+        <li><strong>Possible cause:</strong> the JavaScript <code>Date</code> constructor
+          automatically "rolls over" impossible dates (February 31 becomes March 3), so checking
+          only for <code>NaN</code> lets invalid dates through. This broke the requirement that
+          invalid dates must be rejected.</li>
+        <li><strong>How it was solved:</strong> two checks were added - a regular expression that
+          enforces the <code>YYYY-MM-DD</code> shape, and a round-trip comparison between the
+          input string and <code>toISOString()</code> output, which only matches for real calendar
+          dates. Past dates are also rejected using a separate <code>daysUntil()</code> check.</li>
+        <li><strong>Resources / references:</strong> MDN Web Docs - <code>Date.prototype.toISOString()</code>
+          and regular expressions in JavaScript; W3Schools HTML date input validation guide.</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="datetime" id="current-datetime">Current Date &amp; Time: loading...</div>
+    <small>&copy; 2026 My Study Task Manager | Student web application project</small>
+  </footer>
+
+  <script src="js/shared.js"></script>
+</body>
+</html>

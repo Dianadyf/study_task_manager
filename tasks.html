@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Task Manager - My Study Task Manager</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="brand">
+      <h1>My Study Task Manager</h1>
+      <span>Organize your academic responsibilities in one place</span>
+    </div>
+    <nav class="main-nav">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="tasks.html">Task Manager</a></li>
+        <li><a href="troubleshooting.html">Troubleshooting Blog</a></li>
+        <li><a href="ethics.html">Ethics &amp; Privacy</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <!-- ============ LOGIN SECTION ============ -->
+    <section id="login-section" class="card login-card" style="display:none;">
+      <h2>Login Required</h2>
+      <p class="hint">Access to the task manager page is restricted. Please sign in with your
+        student username and password.</p>
+      <form id="login-form" novalidate>
+        <div class="field">
+          <label for="username">Username</label>
+          <input type="text" id="username" autocomplete="username" placeholder="Enter username">
+        </div>
+        <div class="field">
+          <label for="password">Password</label>
+          <input type="password" id="password" autocomplete="current-password" placeholder="Enter password">
+        </div>
+        <p class="error-msg" id="login-error"></p>
+        <button type="submit" class="btn">Login</button>
+      </form>
+      <p class="login-note">Demo credentials: username <code class="inline-code">student</code> /
+        password <code class="inline-code">study123</code></p>
+    </section>
+
+    <!-- ============ APP SECTION (visible after login) ============ -->
+    <section id="app-section" style="display:none;">
+      <div class="card">
+        <h2>Study Task Manager</h2>
+        <p>Welcome back! Use the form below to create a new study task, or press
+          <strong>Edit</strong> in the table to update an existing one. All fields marked as
+          required are validated before saving.</p>
+        <button class="btn secondary small" id="logout-btn" type="button">Log Out</button>
+      </div>
+
+      <div class="form-alert" id="form-alert" role="alert"></div>
+
+      <!-- CREATE / UPDATE FORM -->
+      <section class="card">
+        <h3 id="form-title">Create a New Study Task</h3>
+        <form id="task-form" novalidate>
+          <div class="form-row">
+            <div class="field">
+              <label for="task-title">Task Title <span style="color:var(--danger)">*</span></label>
+              <input type="text" id="task-title" maxlength="60" placeholder='e.g. "Complete Assignment 3"'>
+              <p class="error-msg" id="task-title-error"></p>
+            </div>
+            <div class="field">
+              <label for="due-date">Due Date <span style="color:var(--danger)">*</span></label>
+              <input type="date" id="due-date">
+              <p class="error-msg" id="due-date-error"></p>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="field">
+              <label for="course-code">Course Code <span style="color:var(--danger)">*</span></label>
+              <input type="text" id="course-code" placeholder='e.g. "INFO1012"'>
+              <p class="error-msg" id="course-code-error"></p>
+            </div>
+            <div class="field">
+              <label for="course-name">Course Name <span style="color:var(--danger)">*</span></label>
+              <input type="text" id="course-name" placeholder='e.g. "Information Technology Systems"'>
+              <p class="error-msg" id="course-name-error"></p>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="field">
+              <label for="priority">Priority</label>
+              <select id="priority">
+                <option value="High">High</option>
+                <option value="Medium" selected>Medium</option>
+                <option value="Low">Low</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="description">Task Description <span style="color:var(--danger)">*</span></label>
+              <textarea id="description" rows="3" maxlength="300"
+                placeholder="e.g. Finish the report section and run final testing"></textarea>
+              <p class="error-msg" id="description-error"></p>
+            </div>
+          </div>
+
+          <button type="submit" class="btn" id="submit-btn">Create Task</button>
+          <button type="button" class="btn secondary" id="cancel-edit-btn" style="display:none;">Cancel Edit</button>
+        </form>
+      </section>
+
+      <!-- VIEW ALL TASKS (ordered table) -->
+      <section class="card">
+        <h3>All Current Study Tasks <span class="hint" id="task-count"></span></h3>
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Task Title</th>
+                <th>Course</th>
+                <th>Due Date</th>
+                <th>Status</th>
+                <th>Priority</th>
+                <th>Description</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="task-table-body">
+              <tr class="empty-row"><td colspan="7">Loading tasks...</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="hint">Tasks are ordered by due date (soonest first). Deleting a task always asks
+          for confirmation first.</p>
+      </section>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="datetime" id="current-datetime">Current Date &amp; Time: loading...</div>
+    <small>&copy; 2026 My Study Task Manager | Student web application project</small>
+  </footer>
+
+  <script src="js/shared.js"></script>
+  <script src="js/tasks.js"></script>
+</body>
+</html>

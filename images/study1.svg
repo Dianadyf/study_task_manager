@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="800" height="500">
+  <rect width="800" height="500" fill="#eef4fb"/>
+  <rect x="0" y="380" width="800" height="120" fill="#d7e5f5"/>
+  <rect x="120" y="300" width="560" height="90" rx="10" fill="#b08968"/>
+  <rect x="140" y="310" width="520" height="12" rx="6" fill="#9a7455"/>
+  <!-- laptop -->
+  <rect x="300" y="170" width="220" height="130" rx="10" fill="#3d5a80"/>
+  <rect x="312" y="182" width="196" height="106" rx="4" fill="#cfe3f7"/>
+  <rect x="280" y="300" width="260" height="16" rx="8" fill="#2c4160"/>
+  <!-- books -->
+  <rect x="150" y="250" width="34" height="50" rx="4" fill="#e63946"/>
+  <rect x="188" y="238" width="34" height="62" rx="4" fill="#f4a261"/>
+  <rect x="226" y="260" width="30" height="40" rx="4" fill="#2a9d8f"/>
+  <!-- sticky notes -->
+  <rect x="580" y="220" width="70" height="70" rx="4" fill="#ffd166" transform="rotate(-6 615 255)"/>
+  <rect x="600" y="300" width="70" height="70" rx="4" fill="#90dbf4" transform="rotate(5 635 335)"/>
+  <!-- person -->
+  <circle cx="640" cy="160" r="34" fill="#f1c0a6"/>
+  <path d="M600 300 Q640 210 690 300 Z" fill="#5a7ea6"/>
+  <rect x="0" y="0" width="800" height="500" fill="none"/>
+  <text x="400" y="460" text-anchor="middle" font-family="Segoe UI, Arial" font-size="26" fill="#3d5a80">Focused study session at the desk</text>
+</svg>
